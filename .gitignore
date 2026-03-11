@@ -1,0 +1,15 @@
+# Archivos internos del workshop (no publicar)
+root-detection-guide.md
+workshop.md
+
+# Código fuente de las apps (solo publicamos los APKs compilados)
+PinningDemo/
+RootDetectionDemo/
+
+# Archivos del sistema
+.DS_Store
+*.iml
+.idea/
+.gradle/
+local.properties
+build/
