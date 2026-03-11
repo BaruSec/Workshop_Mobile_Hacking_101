@@ -1,4 +1,4 @@
-# 🔓 Workshop: "Rompiendo el Candado" — Bypass de SSL Pinning para Bug Hunters
+# 🔓 Hacking Mobile 101 - Workshop
 
 > **Taller práctico** donde aprenderás a interceptar tráfico HTTPS de aplicaciones Android que implementan SSL Pinning, convirtiéndolas en targets web convencionales para tu cacería de bugs.
 
@@ -220,14 +220,18 @@ Frida es la herramienta de instrumentación dinámica que usaremos para inyectar
 
 #### Instalar el cliente de Frida en tu PC:
 
+> [!IMPORTANT]
+> Los scripts de este workshop están probados con **Frida 16.5.9**. Recomendamos instalar exactamente esta versión para evitar problemas de compatibilidad.
+
 ```bash
-pip3 install frida-tools
+pip3 install frida==16.5.9 frida-tools==12.5.0
 ```
 
 Verifica la instalación:
 
 ```bash
 frida --version
+# Debe mostrar: 16.5.9
 ```
 
 #### Descargar e instalar `frida-server` en el dispositivo Android:
@@ -237,14 +241,11 @@ frida --version
 adb shell getprop ro.product.cpu.abi
 # Ejemplo de salida: x86_64 (emulador) o arm64-v8a (teléfono físico)
 
-# 2. Verificar tu versión de frida instalada
-frida --version
-# Ejemplo de salida: 16.x.x
-
-# 3. Descargar frida-server de la MISMA versión desde:
-#    https://github.com/frida/frida/releases
-#    Busca: frida-server-<VERSION>-android-<ARQUITECTURA>.xz
-#    Ejemplo: frida-server-16.x.x-android-x86_64.xz
+# 2. Descargar frida-server 16.5.9 desde:
+#    https://github.com/frida/frida/releases/tag/16.5.9
+#    Busca: frida-server-16.5.9-android-<ARQUITECTURA>.xz
+#    Ejemplo para emulador: frida-server-16.5.9-android-x86_64.xz
+#    Ejemplo para teléfono: frida-server-16.5.9-android-arm64.xz
 
 # 4. Descomprimir
 xz -d frida-server-*.xz
@@ -267,7 +268,7 @@ frida-ps -U
 Si ves la lista de procesos del dispositivo, **¡Frida está lista!** ✅
 
 > [!WARNING]
-> La versión de `frida-tools` (tu PC) y `frida-server` (el dispositivo) **DEBEN SER LA MISMA** versión mayor. De lo contrario, obtendrás errores de incompatibilidad.
+> La versión de `frida` (tu PC) y `frida-server` (el dispositivo) **DEBEN SER LA MISMA**: ambas deben ser **16.5.9**. De lo contrario, obtendrás errores de incompatibilidad.
 
 ---
 
@@ -396,6 +397,3 @@ Antes del taller, asegúrate de que todos estos puntos están marcados:
 - [Burp Suite Docs](https://portswigger.net/burp/documentation)
 - [Android App Hacking — Black Belt Edition (Udemy)](https://www.udemy.com/course/android-app-hacking-black-belt-edition/)
 
----
-
-> **¿Problemas instalando?** Abre un **Issue** en este repositorio o envía un mensaje al grupo del taller. ¡Es mejor resolver problemas de setup antes del día del evento!
